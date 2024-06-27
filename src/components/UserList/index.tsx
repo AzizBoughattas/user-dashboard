@@ -27,10 +27,11 @@ interface UserListProps {
 
 export default function UserList({ users, onSelectUser }: UserListProps) {
   const userList = useMemo(() => {
+    //By using useMemo, we cache the result of the mapping operation and only recompute it when the dependencies change, avoiding unnecessary re-renders and improving performance.
     return users.map((user) => (
       <li
         key={user.id}
-        onClick={() => onSelectUser(user)}
+        onClick={() => onSelectUser(user)} // Select the user whose details I want to see.
         className="px-6 py-3 cursor-pointer"
       >
         {user.name}

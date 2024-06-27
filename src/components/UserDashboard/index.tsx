@@ -4,12 +4,12 @@ import { fetchUsers } from "../../utils";
 import UserDetail from "../UserDetail";
 
 export default function UserDashboard() {
-  const [users, setUsers] = useState([]);
+  const [users, setUsers] = useState<User[]>([]);
   const [selectedUser, setSelectedUser] = useState<User>();
 
   useEffect(() => {
     const getUsers = async () => {
-      const users = await fetchUsers();
+      const users = await fetchUsers(); // Fetch Users
       setUsers(users);
     };
 
@@ -22,6 +22,7 @@ export default function UserDashboard() {
       <div className="flex flex-col md:flex-row">
         <UserList users={users} onSelectUser={setSelectedUser} />
         {selectedUser && <UserDetail user={selectedUser} />}
+        {/*Render user details when selectedUser is not empty */}
       </div>
     </div>
   );
